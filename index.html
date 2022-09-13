@@ -13,14 +13,37 @@
     </header>       
 
     <main>
+        <form action="" method="post">
+            <ul>
+                <li>
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title">
+                </li>
+                <li>
+                    <label for="author">Author</label>
+                    <input type="text" id="author" name="author">
+                </li>
+                <li>
+                    <label for="pages">Pages</label>
+                    <input type="number" id="pages" name="pages" min="1" max="10000">
+                </li>
+                <li>
+                    <label for="status">Status</label>
+                    <select id="status" name="status">
+                        <option value="read">Read</option>
+                        <option value="not-read">Not Read</option>
+                    </select>
+                </li>
+            </ul>
+        </form> 
         <table>
-            <tr class="a">
+            <tr>
                 <th scope="col">Title</th>
                 <th scope="col">Author</th>
                 <th scope="col">Pages</th>
                 <th scope="col">Status</th>
             </tr>
-            <tr class="a">
+            <tr>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -28,15 +51,15 @@
                 <th><img src="edit_FILL0_wght400_GRAD0_opsz48.svg" width="25" height="25"></th>
                 <th><img src="delete_FILL0_wght400_GRAD0_opsz48.svg" width="25" height="25"></th>
             </tr>
-            <tr class="a">
+            <tr>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <th><img src="edit_FILL0_wght400_GRAD0_opsz48.svg" width="25" height="25"></th>
                 <th><img src="delete_FILL0_wght400_GRAD0_opsz48.svg" width="25" height="25"></th>
-            </tr>
-            <tr class="a">
+                </tr>
+            <tr>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -47,27 +70,5 @@
         </table>
         <button>+ Add book</button>
     </main>
-    <form action="" method="post">
-        <ul>
-            <li>
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title">
-            </li>
-            <li>
-                <label for="author">Author</label>
-                <input type="text" id="author" name="author">
-            </li>
-            <li>
-                <label for="pages">Pages</label>
-                <input type="number" id="pages" name="pages" min="1" max="10000">
-            </li>
-            <li>
-                <label for="status">Status</label>
-                <select id="status" name="status">
-                    <option value="read">Read</option>
-                    <option value="not-read">Not Read</option>
-            </li>
-        </ul>
-    </form> 
 </body>
 </html>
