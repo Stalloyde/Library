@@ -13,29 +13,35 @@
     </header>       
 
     <main>
-        <form action="" method="post">
-            <ul>
-                <li>
-                    <label for="title">Title</label>
-                    <input type="text" id="title" name="title">
-                </li>
-                <li>
-                    <label for="author">Author</label>
-                    <input type="text" id="author" name="author">
-                </li>
-                <li>
-                    <label for="pages">Pages</label>
-                    <input type="number" id="pages" name="pages" min="1" max="10000">
-                </li>
-                <li>
-                    <label for="status">Status</label>
-                    <select id="status" name="status">
-                        <option value="read">Read</option>
-                        <option value="not-read">Not Read</option>
-                    </select>
-                </li>
-            </ul>
-        </form> 
+        <div class="form">
+            <form action="" method="post" id="form">
+                    <div>
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title">
+            
+                    </div>
+                        <div>
+                            <label for="author">Author</label>
+                            <input type="text" id="author" name="author">
+                        </div>
+                        <div>
+                            <label for="pages">Pages</label>
+                            <input type="number" id="pages" name="pages" min="1" max="10000">
+                        </div>
+                        <div>
+                            <label for="status">Status</label>
+                            <select id="status" name="status">
+                                <option value="read">Read</option>
+                                <option value="not-read">Not Read</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="submit" value="Add Book">
+                            <br>
+                            <button>Close</button>
+                        </div>
+            </form>
+        </div>
         <table>
             <tr>
                 <th scope="col">Title</th>
@@ -68,7 +74,7 @@
                 <th><img src="delete_FILL0_wght400_GRAD0_opsz48.svg" width="25" height="25"></th>
             </tr>
         </table>
-        <button>+ Add book</button>
+        <button class="add">+Add Book</button>
     </main>
 </body>
 </html>
