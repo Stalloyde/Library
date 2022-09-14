@@ -10,7 +10,6 @@ body {
     grid-template-rows: 1fr 5fr;
     grid-template-columns: 1fr;
     height: 80vh;
-    border: 1px solid black;
     margin: 5em;
     padding: 1em;
 }
@@ -66,4 +65,12 @@ button {
     border-radius: 10px;
     background-color:cornflowerblue;
     color: white;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+    img:hover{
+    transform: scale(1.2);
 }
