@@ -14,7 +14,7 @@ body {
     padding: 1em;
 }
 
-header, main {
+header {
     padding: 1em;
     width: 70%;
     margin: 0 auto;
@@ -53,7 +53,7 @@ table{
     text-align: left;
 }
 
-.item-book {
+tr {
     border-bottom:1px solid black;
 }
 
