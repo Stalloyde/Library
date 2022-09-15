@@ -25,12 +25,10 @@ addBook('first book','author',123,'not read');
 addBook('second book','author',51341,'not read');
 
 function displayTable () {
-const table = document.createElement("table");
-let tr = document.createElement("tr")
-const header = ['title', 'author', 'pages', 'status'];
+    const table = document.createElement("table");
+    let tr = document.createElement("tr")
+    const header = ['title', 'author', 'pages', 'status'];
 
-
-//create row table header
     for (let i=0; i< header.length; i++) {
         let th = document.createElement("th");
         th.textContent = header[i].charAt(0).toUpperCase() + header[i].slice(1);
@@ -38,25 +36,17 @@ const header = ['title', 'author', 'pages', 'status'];
         table.appendChild(tr);
     }   
 
-//create header row
-    for (let x=0; x<books.length; x++) { //loop twice
-        console.log(books[x]); //confirm loops twice
-        let tr = document.createElement("tr"); //every loop creates one tag of tr
+    for (let x=0; x<books.length; x++) { 
+        console.log(books[x]);
+        let tr = document.createElement("tr"); 
         
-        //create content rows
-        for (let z=0; z<header.length; z++) { //in each tr, inner loop four times
-            let td = document.createElement("td"); // each inner loop creates one td tag
+        for (let z=0; z<header.length; z++) { 
+            let td = document.createElement("td");
             tr.appendChild(td);
             td.textContent = 'sdsds'
             table.appendChild(tr);
         }
-
-
     }
     tableDiv.appendChild(table);
 }
-
 displayTable()
-//i got my tables and its header.
-// i got the rows... need to retrieve each elements' info
-// need to append table to the correct place in the body
