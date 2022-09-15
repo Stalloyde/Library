@@ -1,16 +1,11 @@
 const form = document.querySelector(".form");
 const close = document.querySelector(".close");
 const openAddForm = document.querySelector(".add");
-const displayTitle = document.querySelectorAll(".title")
-const displayAuthor = document.querySelectorAll(".author")
-const displayPages = document.querySelectorAll(".pages")
-const displayStatus = document.querySelectorAll(".status")
+const addBookButton = document.querySelector(".add");
+const tableDiv = document.querySelector(".table");
 openAddForm.addEventListener("click", function () {form.style.display = "flex"});
 close.addEventListener("click", function () {form.style.display = "none"});
-displayTitle.textContent = "";
-displayAuthor.textContent = "";
-displayPages.textContent = "";
-displayStatus.textContent = "";
+
 
 const books = [];
 
@@ -29,17 +24,39 @@ function addBook (title,author,pages,status) {
 addBook('first book','author',123,'not read');
 addBook('second book','author',51341,'not read');
 
-function displayItems () {
-    for (let i=0; i<books.length; i++) {
-        displayTitle.forEach(item => item.textContent = books[i].title); 
-        displayAuthor.forEach(item => item.textContent = books[i].author); 
-        displayPages.forEach(item => item.textContent = books[i].pages); 
-        displayStatus.forEach(item => item.textContent = books[i].status);             
-    };
+function displayTable () {
+const table = document.createElement("table");
+let tr = document.createElement("tr")
+const header = ['title', 'author', 'pages', 'status'];
+
+
+//create row table header
+    for (let i=0; i< header.length; i++) {
+        let th = document.createElement("th");
+        th.textContent = header[i].charAt(0).toUpperCase() + header[i].slice(1);
+        tr.appendChild(th);
+        table.appendChild(tr);
+    }   
+
+//create header row
+    for (let x=0; x<books.length; x++) { //loop twice
+        console.log(books[x]); //confirm loops twice
+        let tr = document.createElement("tr"); //every loop creates one tag of tr
+        
+        //create content rows
+        for (let z=0; z<header.length; z++) { //in each tr, inner loop four times
+            let td = document.createElement("td"); // each inner loop creates one td tag
+            tr.appendChild(td);
+            td.textContent = 'sdsds'
+            table.appendChild(tr);
+        }
+
+
+    }
+    tableDiv.appendChild(table);
 }
 
-displayItems();
-//this displays only the latest array, but spreads accross all rows. 
-//how do i get the first array to display on the first row, second array on the second row etc.
-//in displayItem(), create new table elements then each new element's text content =
-//
+displayTable()
+//i got my tables and its header.
+// i got the rows... need to retrieve each elements' info
+// need to append table to the correct place in the body
