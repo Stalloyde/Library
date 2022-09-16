@@ -54,25 +54,50 @@ table{
     margin: 0 auto;
 }
 
-tr {
-    border-bottom:1px solid black;
+th {
     padding: 1em;
 }
 
-button {
+tr {
+    border-bottom:1px solid black;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) 0.5fr 0.5fr;
+    align-items: center;
+}
+
+td { 
+    padding: 1em;
+}
+
+.addBookButton {
     display: block;
     margin: 5em auto;
-    width: 10%;
-    height: 10%;
+    width: 100px;
+    height: 50px;
     border-radius: 10px;
     background-color:cornflowerblue;
     color: white;
 }
 
-button:hover {
+.addBookButton:hover, img:hover, .action-button:hover {
+    cursor:pointer;
     transform: scale(1.1);
 }
 
-    img:hover{
-    transform: scale(1.2);
+.action-button {
+    width: 70%;
+    height: 60%;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.del-button {
+    background-color:orangered;
+    color: white;
+}
+
+img {
+    grid-template-columns: auto auto;
+    height: 30px;
+    width: 30px;
 }
