@@ -10,7 +10,7 @@ close.addEventListener("click", function () {form.style.display = "none"});
 const books = [];
 
 function Book (title, author, pages, status) {
-    this.title = title;``
+    this.title = title;
     this.author = author;
     this.pages = pages;
     this.status = status;
@@ -21,14 +21,15 @@ function addBook (title,author,pages,status) {
     books.push(newBook);
 }
 
-addBook('first book','author',123,'not read');
+addBook('first book','author',123,'read');
 addBook('second book','author',51341,'not read');
+addBook('Third book','tester',45462,'read');
 
 function displayTable () {
     const table = document.createElement("table");
     let tr = document.createElement("tr")
     const header = ['title', 'author', 'pages', 'status'];
-
+    
     for (let i=0; i< header.length; i++) {
         let th = document.createElement("th");
         th.textContent = header[i].charAt(0).toUpperCase() + header[i].slice(1);
@@ -37,16 +38,15 @@ function displayTable () {
     }   
 
     for (let x=0; x<books.length; x++) { 
-        console.log(books[x]);
-        let tr = document.createElement("tr"); 
+        let tr = document.createElement("tr");
         
-        for (let z=0; z<header.length; z++) { 
+        for (const y in books[x]) {
             let td = document.createElement("td");
+            td.textContent = books[x][y]; 
             tr.appendChild(td);
-            td.textContent = 'sdsds'
             table.appendChild(tr);
-        }
-    }
+        }      
     tableDiv.appendChild(table);
+    }
 }
 displayTable()
