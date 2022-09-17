@@ -21,30 +21,66 @@ header, main {
     margin: 0 auto;
 }
 
+main {
+    margin-top: 1em;
+}
+
 .form {
     display:flex;
     justify-content: center;
     border: 1px solid black;
-    position: absolute;
+    position: absolute; 
+    border-radius: 10px;
+    background-color:blanchedalmond;
     left: 0;
     right: 0;
     margin: auto;
     padding: 1em;
     width: 20%;
     display: none;
-    background-color: coral;
 }
 
 form>div {
     display:grid;
-    padding: 1em;
+    border-radius: 10px;
     gap: 0.2em;
 }
 
-form>div>input, form>div>button, form>div>select {
+form>div>div {
+    display:grid;
+    border-radius: 10px;
+    padding: 0.5em;
+    gap: 0.2em; 
+}
+
+form>div>div>input, form>div>div>button, form>div>div>select {
     width: 15vw;
+    border-radius: 10px;
     height: 2.5em;
     padding: 0.5em;
+}
+
+form>div>div>input:focus, form>div>div>button:focus, form>div>div>select:focus {
+    transform: scale(1.1);
+}
+
+#status, input[type=number] {
+    width: 5.5vw;
+}
+
+input[type=submit] {
+    background-color:cornflowerblue;
+    font: white;
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+
+.close {
+    font-size: 1em;
+}
+
+.close:hover, input[type=submit]:hover, #status:hover {
+    cursor: pointer;
 }
 
 table{	
