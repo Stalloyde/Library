@@ -5,8 +5,7 @@ const tableDiv = document.querySelector(".table");
 openAddForm.addEventListener("click", function () {form.style.display = "flex"});
 close.addEventListener("click", function () {form.style.display = "none"});
 
-
-const books = [];
+const books = [{}];
 
 function Book (title, author, pages, status) {
     this.title = title;
@@ -23,35 +22,52 @@ function addBook (title,author,pages,status) {
 addBook('first book','author',123,'read');
 addBook('second book','author',51341,'not read');
 addBook('Third book','tester',45462,'read');
+addBook('fourth book','author',51341,'not read');
 
 const table = document.createElement("table");
-let tr = document.createElement("tr")
+const tr = document.createElement("tr")
 const header = ['title', 'author', 'pages', 'status'];
 
+//create first row of header
 for (let i=0; i< header.length; i++) {
-    let th = document.createElement("th");
+    const th = document.createElement("th");
     th.textContent = header[i].charAt(0).toUpperCase() + header[i].slice(1);
     tr.appendChild(th);
     table.appendChild(tr);
 }   
 
+//create dynamic rows that appends as new objects are created
 for (let x=0; x<books.length; x++) { 
-    let tr = document.createElement("tr");
-
+    const tr = document.createElement("tr");
+    tableDiv.appendChild(table);
+    
+    //create and append dynamic columns for each dynamic rows created
     for (const y in books[x]) {
-        let td = document.createElement("td");  
+        const td = document.createElement("td");  
         td.textContent = books[x][y]; 
-        tr.appendChild(td);
         table.appendChild(tr);
+        tr.appendChild(td);
     }      
-
-const edit = document.createElement("button");
-const del = document.createElement("button");
-edit.classList.add("action-button","edit-button");
-del.classList.add("action-button","del-button");
-edit.textContent = "Edit";
-del.textContent = "Delete";
-tr.appendChild(edit);
-tr.appendChild(del);
-tableDiv.appendChild(table);
+    
+    //create and append edit button for each row
+    const edit = document.createElement("button");
+    edit.classList.add("action-button","edit-button");
+    edit.textContent = "Edit";
+    tr.appendChild(edit);
+    
+    //create and append delete button for each row
+    const del = document.createElement("button");
+    del.classList.add("action-button","del-button");
+    del.textContent = "Delete";
+    tr.appendChild(del);
+    
+    tr.id = x;
+    
+    del.addEventListener("click", function () {
+        tr.remove();     
+        if (Number(tr.id) === books.indexOf(books[x])) {
+            delete(books[x]);
+            console.log(books)
+        }
+    })
 }
