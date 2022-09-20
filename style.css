@@ -31,7 +31,7 @@ main {
     border: 1px solid black;
     position: absolute; 
     border-radius: 10px;
-    background-color:blanchedalmond;
+    background-color:cornsilk;
     left: 0;
     right: 0;
     margin: auto;
@@ -62,16 +62,20 @@ form>div>div>input, form>div>div>button, form>div>div>select {
 }
 
 form>div>div>input:focus, form>div>div>button:focus, form>div>div>select:focus {
-    transform: scale(1.1);
+    transform: scale(1.05);
+}
+
+form>div>div>input:hover, form>div>div>button:hover, form>div>div>select:hover {
+    transform: scale(1.05);
 }
 
 #status, input[type=number] {
-    width: 5.5vw;
+    width: 4.6vw;
 }
 
 input[type=submit] {
-    background-color:cornflowerblue;
-    font: white;
+    background-color:rgb(34, 75, 12);
+    color: white;
     font-size: 1em;
     margin-bottom: 1em;
 }
@@ -112,7 +116,7 @@ td {
     width: 100px;
     height: 50px;
     border-radius: 10px;
-    background-color:cornflowerblue;
+    background-color:rgb(34, 75, 12);
     color: white;
 }
 
@@ -134,7 +138,7 @@ td {
 }
 
 .del-button {
-    background-color:orangered;
+    background-color:rgb(172, 68, 37);
     color: white;
 }
 
