@@ -49,9 +49,11 @@ for (let x=0; x<books.length; x++) {
         tr.appendChild(td);
     }      
     
-    //create and append edit button for each row
+    //create and append Read/Unread button for each row
     const readUnread = document.createElement("button");
     readUnread.classList.add("action-button","readUnread-button");
+
+    //execute read/unread button
     function setStatusCondition () {
         if (books[x].status === "Read") { 
             readUnread.textContent = "Mark as Unread";
@@ -63,14 +65,17 @@ for (let x=0; x<books.length; x++) {
     };
     setStatusCondition();
     readUnread.addEventListener("click", function() {
+        statusContent = tr.querySelector("td:nth-child(4)");
+
         if (books[x].status === "Read") {
             books[x].status = "Unread";
+            statusContent.textContent = "Unread";
             setStatusCondition();
         } else if (books[x].status === "Unread") {
             books[x].status = "Read";
+            statusContent.textContent = "Read";
             setStatusCondition();
         }
-        //need to connect to the DOM's table and status text/
     });
 
     tr.appendChild(readUnread);
@@ -82,6 +87,8 @@ for (let x=0; x<books.length; x++) {
     tr.appendChild(del);
     
     tr.id = x;
+
+
     
     del.addEventListener("click", function () {
         if(confirm("Are you sure you want to delete this book?")) {
