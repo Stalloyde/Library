@@ -19,10 +19,10 @@ function addBook (title,author,pages,status) {
     books.push(newBook);
 }
 
-addBook('first book','author',123,'read');
-addBook('second book','author',51341,'not read');
-addBook('Third book','tester',45462,'read');
-addBook('fourth book','author',51341,'not read');
+addBook('first book','author',123,'Read');
+addBook('second book','author',51341,'Unread');
+addBook('fourth book','author',51341,'Unread');
+addBook('Third book','tester',45462,'Read');
 
 const table = document.createElement("table");
 const tr = document.createElement("tr")
@@ -50,10 +50,30 @@ for (let x=0; x<books.length; x++) {
     }      
     
     //create and append edit button for each row
-    const edit = document.createElement("button");
-    edit.classList.add("action-button","edit-button");
-    edit.textContent = "Edit";
-    tr.appendChild(edit);
+    const readUnread = document.createElement("button");
+    readUnread.classList.add("action-button","readUnread-button");
+    function setStatusCondition () {
+        if (books[x].status === "Read") { 
+            readUnread.textContent = "Mark as Unread";
+            tr.style.backgroundColor = "lightGreen";
+        } else {
+            readUnread.textContent = "Mark as Read";
+            tr.style.backgroundColor = "lightGray";
+        }
+    };
+    setStatusCondition();
+    readUnread.addEventListener("click", function() {
+        if (books[x].status === "Read") {
+            books[x].status = "Unread";
+            setStatusCondition();
+        } else if (books[x].status === "Unread") {
+            books[x].status = "Read";
+            setStatusCondition();
+        }
+        //need to connect to the DOM's table and status text/
+    });
+
+    tr.appendChild(readUnread);
     
     //create and append delete button for each row
     const del = document.createElement("button");
@@ -64,10 +84,19 @@ for (let x=0; x<books.length; x++) {
     tr.id = x;
     
     del.addEventListener("click", function () {
-        tr.remove();     
-        if (Number(tr.id) === books.indexOf(books[x])) {
-            delete(books[x]);
-            console.log(books)
+        if(confirm("Are you sure you want to delete this book?")) {
+            tr.remove();     
+            if (Number(tr.id) === books.indexOf(books[x])) {
+                delete(books[x]);
+                console.log(books)
+            }
         }
     })
+
+
+    //         edit data of corresponding row
+    //         save it and reflect onto array and DOM
+    // })
 }
+
+
