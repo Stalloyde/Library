@@ -7,45 +7,45 @@
         <link rel="stylesheet" href="style.css">
     </head>
 <body>
-    <header>
-        <h1>Library</h1>
-        <br>
-        <p>Keep track of your reading list, or save your favourite books for re-reads here.</p>
-    </header>    
-    <main>
-        <div class="form">
-            <form action="" method="post" id="form">
-                <div>
-                    <div>
-                        <label for="title">Title</label>
-                        <input type="text" id="title" name="title" required>
-                    </div>
+    <div id="filter">
+            <header>
+                <h1>Library</h1>
+                <br>
+                <p>Keep track of your reading list, or save your favourite books for re-reads here.</p>
+            </header>
+            <main>
+                <div class="table"></div>
+                <div class="form">
+                    <form action="" method="post" id="form">
                         <div>
-                            <label for="author">Author</label>
-                            <input type="text" id="author" name="author" required>
+                            <div>
+                                <label for="title">Title</label>
+                                <input type="text" id="title" name="title" required>
+                            </div>
+                                <div>
+                                    <label for="author">Author</label>
+                                    <input type="text" id="author" name="author" required>
+                                </div>
+                                <div>
+                                    <label for="pages">Pages</label>
+                                    <input type="number" id="pages" name="pages" min="1" required>
+                                </div>
+                                <div>
+                                    <label for="status">Status</label>
+                                    <select id="status" name="status">
+                                        <option value="Read">Read</option>
+                                        <option value="Unread">Unread</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <input id="submit" type="submit" value="Add Book">
+                                    <button class="close">Close</button>
+                                </div>
                         </div>
-                        <div>
-                            <label for="pages">Pages</label>
-                            <input type="number" id="pages" name="pages" min="1" required>
-                        </div>
-                        <div>
-                            <label for="status">Status</label>
-                            <select id="status" name="status">
-                                <option value="Read">Read</option>
-                                <option value="Unread">Unread</option>
-                            </select>
-                        </div>
-                        <div>
-                            <input type="submit" value="Add Book">
-                            <button class="close">Close</button>
-                        </div>
+                    </form>
                 </div>
-            </form>       
-        </div>
-        <div class="table"></div>
-                <!-- <td><img src="edit_FILL0_wght400_GRAD0_opsz48.svg" width="25" height="25"></td> -->
-                <!-- <td><img src="delete_FILL0_wght400_GRAD0_opsz48.svg" width="25" height="25"></td> -->
-        <button class="addBookButton">+ Add Book</button>
-    </main>   
+                <button class="addBookButton">+ Add Book</button>
+            </main>
+    </div>
 </body>
 </html>
