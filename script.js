@@ -78,10 +78,10 @@ function renderTable () {
         //read/unread button functionality
         function setStatusCondition () {
             if (latestBookAdded.status === "Read") { 
-                readUnread.textContent = "Mark as Unread";
+                readUnread.textContent = "Mark Unread";
                 tr.style.backgroundColor = "rgb(240, 242, 182)";
             } else {
-                readUnread.textContent = "Mark as Read";
+                readUnread.textContent = "Mark Read";
                 tr.style.backgroundColor = "white";
             }
         };
