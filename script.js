@@ -8,17 +8,21 @@ const inputAuthor = document.getElementById("author");
 const inputPages = document.getElementById("pages");
 const inputStatus = document.getElementById("status");
 const filter = document.getElementById("filter");
+const table = document.createElement("table");
+const tr = document.createElement("tr")
+const header = ['title', 'author', 'pages', 'status'];
 
+function closeForm () {    
+    form.style.display = "none";
+    filter.classList.remove("blur");
+}
 
 openAddForm.addEventListener("click", function () {
     form.style.display = "flex";
     filter.classList.add("blur");
 });
 
-close.addEventListener("click", function () {
-    form.style.display = "none";
-    filter.classList.remove("blur");
-});
+close.addEventListener("click", closeForm);
 
 const books = [{}];
 
@@ -37,14 +41,8 @@ function addBook (title,author,pages,status) {
 submitForm.addEventListener("click", function () {
     addBook (inputTitle.value, inputAuthor.value, inputPages.value, inputStatus.value)
     renderTable();
-    form.style.display = "none";
-    filter.classList.remove("blur");
-    console.log(books)
+    closeForm();
 });
-
-const table = document.createElement("table");
-const tr = document.createElement("tr")
-const header = ['title', 'author', 'pages', 'status'];
 
 //create first row of header
 for (let i=0; i< header.length; i++) {
@@ -60,9 +58,10 @@ function renderTable () {
     for (let x=0; x<1; x++) { 
         const latestBookAdded = books[books.length-1];
         const tr = document.createElement("tr");
-        let x=0;
-        tr.id = x++;
+        
+        tr.id = books.indexOf(latestBookAdded);
         table.appendChild(tr);
+        
 
         //create and render columns for rows created
         for (const y in latestBookAdded) {
@@ -95,12 +94,10 @@ function renderTable () {
                 latestBookAdded.status = "Unread";
                 statusContent.textContent = "Unread";
                 setStatusCondition();
-                console.log(books)
             } else if (latestBookAdded.status === "Unread") {
                 latestBookAdded.status = "Read";
                 statusContent.textContent = "Read";
                 setStatusCondition();
-                console.log(books)
             }
         });
 
@@ -110,18 +107,18 @@ function renderTable () {
         del.textContent = "Delete";
         tr.appendChild(del);
 
-
         //delete button functionality
         del.addEventListener("click", function () {
             if(confirm("Are you sure you want to delete this book?")) {
                 tr.remove();     
-                if (Number(tr.id) === books.indexOf(this)) {
-                    delete(this);
-                    console.log(books)
+                for (let p=0; p<books.length; p++) {
+                    if (Number(tr.id) === p) {
+                        delete(books[tr.id]);
+                    };
                 };
             };
-        })    
-    }
+        });    
+    };
 }
 
 
