@@ -3,8 +3,13 @@ const close = document.querySelector(".close");
 const openAddForm = document.querySelector(".addBookButton");
 const tableDiv = document.querySelector(".table");
 const submitForm = document.getElementById("submit");
-
+const inputTitle = document.getElementById("title");
+const inputAuthor = document.getElementById("author");
+const inputPages = document.getElementById("pages");
+const inputStatus = document.getElementById("status");
 const filter = document.getElementById("filter");
+
+
 openAddForm.addEventListener("click", function () {
     form.style.display = "flex";
     filter.classList.add("blur");
@@ -29,15 +34,13 @@ function addBook (title,author,pages,status) {
     books.push(newBook);
 }
 
-addBook('first book','author',123,'Read');
-addBook('second book','author',51341,'Unread');
-addBook('fourth book','author',51341,'Unread');
-addBook('Third book','tester',45462,'Read');
-
 submitForm.addEventListener("click", function () {
-
-})
-
+    addBook (inputTitle.value, inputAuthor.value, inputPages.value, inputStatus.value)
+    renderTable();
+    form.style.display = "none";
+    filter.classList.remove("blur");
+    console.log(books)
+});
 
 const table = document.createElement("table");
 const tr = document.createElement("tr")
@@ -49,72 +52,77 @@ for (let i=0; i< header.length; i++) {
     th.textContent = header[i].charAt(0).toUpperCase() + header[i].slice(1);
     tr.appendChild(th);
     table.appendChild(tr);
+    tableDiv.appendChild(table);
 }   
 
-//create dynamic rows that appends as new objects are created
-for (let x=0; x<books.length; x++) { 
-    const tr = document.createElement("tr");
-    tableDiv.appendChild(table);
-    
-    //create and append dynamic columns for each dynamic rows created
-    for (const y in books[x]) {
-        const td = document.createElement("td");  
-        td.textContent = books[x][y]; 
+//create and render rows initial objects
+function renderTable () {
+    for (let x=0; x<1; x++) { 
+        const latestBookAdded = books[books.length-1];
+        const tr = document.createElement("tr");
+        let x=0;
+        tr.id = x++;
         table.appendChild(tr);
-        tr.appendChild(td);
-    }      
-    
-    //create and append Read/Unread button for each row
-    const readUnread = document.createElement("button");
-    readUnread.classList.add("action-button","readUnread-button");
-    tr.appendChild(readUnread);
 
-    //read/unread button functionality
-    function setStatusCondition () {
-        if (books[x].status === "Read") { 
-            readUnread.textContent = "Mark as Unread";
-            tr.style.backgroundColor = "rgb(240, 242, 182)";
-        } else {
-            readUnread.textContent = "Mark as Read";
-            tr.style.backgroundColor = "white";
-        }
-    };
+        //create and render columns for rows created
+        for (const y in latestBookAdded) {
+            const td = document.createElement("td");  
+            td.textContent = latestBookAdded[y]; 
+            tr.appendChild(td);
+        }      
 
-    setStatusCondition();
-    readUnread.addEventListener("click", function() {
-        statusContent = tr.querySelector("td:nth-child(4)");
+        //create and render readUnread buttons for each row created
+        const readUnread = document.createElement("button");
+        readUnread.classList.add("action-button","readUnread-button");
+        tr.appendChild(readUnread);
 
-        if (books[x].status === "Read") {
-            books[x].status = "Unread";
-            statusContent.textContent = "Unread";
-            setStatusCondition();
-            console.log(books)
-        } else if (books[x].status === "Unread") {
-            books[x].status = "Read";
-            statusContent.textContent = "Read";
-            setStatusCondition();
-            console.log(books)
-        }
-    });
+        //read/unread button functionality
+        function setStatusCondition () {
+            if (latestBookAdded.status === "Read") { 
+                readUnread.textContent = "Mark as Unread";
+                tr.style.backgroundColor = "rgb(240, 242, 182)";
+            } else {
+                readUnread.textContent = "Mark as Read";
+                tr.style.backgroundColor = "white";
+            }
+        };
 
-    //create and append delete button for each row
-    const del = document.createElement("button");
-    del.classList.add("action-button","del-button");
-    del.textContent = "Delete";
-    tr.appendChild(del);
-    
-    tr.id = x;
+        setStatusCondition();
+        readUnread.addEventListener("click", function() {
+            statusContent = tr.querySelector("td:nth-child(4)");
 
-    //delete button functionality
-    del.addEventListener("click", function () {
-        if(confirm("Are you sure you want to delete this book?")) {
-            tr.remove();     
-            if (Number(tr.id) === books.indexOf(books[x])) {
-                delete(books[x]);
+            if (latestBookAdded.status === "Read") {
+                latestBookAdded.status = "Unread";
+                statusContent.textContent = "Unread";
+                setStatusCondition();
+                console.log(books)
+            } else if (latestBookAdded.status === "Unread") {
+                latestBookAdded.status = "Read";
+                statusContent.textContent = "Read";
+                setStatusCondition();
                 console.log(books)
             }
-        }
-    })
+        });
+
+        //create and append delete button for each row
+        const del = document.createElement("button");
+        del.classList.add("action-button","del-button");
+        del.textContent = "Delete";
+        tr.appendChild(del);
+
+
+        //delete button functionality
+        del.addEventListener("click", function () {
+            if(confirm("Are you sure you want to delete this book?")) {
+                tr.remove();     
+                if (Number(tr.id) === books.indexOf(this)) {
+                    delete(this);
+                    console.log(books)
+                };
+            };
+        })    
+    }
 }
+
 
 
