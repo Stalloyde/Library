@@ -93,12 +93,11 @@ function renderTable () {
             if (latestBookAdded.status === "Read") {
                 latestBookAdded.status = "Unread";
                 statusContent.textContent = "Unread";
-                setStatusCondition();
             } else if (latestBookAdded.status === "Unread") {
                 latestBookAdded.status = "Read";
                 statusContent.textContent = "Read";
-                setStatusCondition();
             }
+            setStatusCondition();
         });
 
         //create and append delete button for each row
