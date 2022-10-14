@@ -18,7 +18,7 @@ function closeForm () {
 }
 
 openAddForm.addEventListener("click", function () {
-    form.style.display = "flex";
+    form.style.display = "flex"
     filter.classList.add("blur");
 });
 
@@ -26,11 +26,13 @@ close.addEventListener("click", closeForm);
 
 const books = [{}];
 
-function Book (title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
+class Book {
+    constructor (title, author, pages, status) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+    }
 }
 
 function addBook (title,author,pages,status) {
