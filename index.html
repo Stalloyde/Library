@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Library</title>
-        <script src="script.js" defer></script>
-        <link rel="stylesheet" href="style.css">
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
 <body>
     <div id="filter">
-            <header>
-                <h1>Library</h1>
-                <br>
-                <p>Keep track of your reading list, or save your favourite books for re-reads here.</p>
-            </header>
-            <main>
-                <div class="table"></div>
-                <div class="form">
-                    <form action="" method="post" id="form">
+        <header>
+            <h1>Library</h1>
+            <br>
+            <p>Keep track of your reading list, or save your favourite books for re-reads here.</p>
+        </header>
+        <main>
+            <div class="table"></div>
+            <div class="form">
+                <form action="" method="post" id="form" novalidate>
+                    <div>
                         <div>
-                            <div>
-                                <label for="title">Title</label>
-                                <input type="text" id="title" name="title" required>
-                            </div>
-                                <div>
-                                    <label for="author">Author</label>
-                                    <input type="text" id="author" name="author" required>
-                                </div>
-                                <div>
-                                    <label for="pages">Pages</label>
-                                    <input type="number" id="pages" name="pages" min="1" required>
-                                </div>
-                                <div>
-                                    <label for="status">Status</label>
-                                    <select id="status" name="status">
-                                        <option value="Read">Read</option>
-                                        <option value="Unread">Unread</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <button id="submit" type="button">Add Book</button>
-                                    <button class="close">Close</button>
-                                </div>
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="title" required />
+                            <span id="title-error"></span>
                         </div>
-                    </form>
-                </div>
-                <button class="addBookButton">+ Add Book</button>
-            </main>
+                        <div>
+                            <label for="author">Author</label>
+                            <input type="text" id="author" name="author" required />
+                            <span id="author-error"></span>
+                        </div>
+                        <div>
+                            <label for="pages">Pages</label>
+                            <input type="number" id="pages" name="pages" min="1" required />
+                            <span id="pages-error"></span>
+                        </div>
+                        <div>
+                            <label for="status">Status</label>
+                            <select id="status" name="status">
+                                <option value="Read">Read</option>
+                                <option value="Unread">Unread</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input id="submit" type="submit" value="Add Book" />
+                            <button class="close">Close</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <button class="addBookButton">+ Add Book</button>
+        </main>
     </div>
 </body>
+
 </html>
