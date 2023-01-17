@@ -48,6 +48,7 @@ inputTitle.addEventListener('input', (e) => {
     showError(inputTitle, titleError);
   } else {
     titleError.textContent = '';
+    inputTitle.style.border = '1px solid black';
   }
 });
 
@@ -56,6 +57,7 @@ inputAuthor.addEventListener('input', (e) => {
     showError(inputAuthor, authorError);
   } else {
     authorError.textContent = '';
+    inputAuthor.style.border = '1px solid black';
   }
 });
 
@@ -64,12 +66,14 @@ inputPages.addEventListener('input', (e) => {
     showError(inputPages, pagesError);
   } else {
     pagesError.textContent = '';
+    inputPages.style.border = '1px solid black';
   }
 });
 
 function showError(targetInput, targetError) {
   if (targetInput.validity.valueMissing) {
     targetError.textContent = 'This field cannot be empty.';
+    targetInput.style.border = '1px solid red';
   }
 }
 
