@@ -7,6 +7,8 @@ const inputTitle = document.getElementById('title');
 const inputAuthor = document.getElementById('author');
 const inputPages = document.getElementById('pages');
 const inputStatus = document.getElementById('status');
+const inputPw = document.getElementById('pw');
+const inputPwConfirm = document.getElementById('pw-confirm');
 const filter = document.getElementById('filter');
 const table = document.createElement('table');
 const tr = document.createElement('tr');
@@ -14,8 +16,24 @@ const header = ['title', 'author', 'pages', 'status'];
 const titleError = document.getElementById('title-error');
 const authorError = document.getElementById('author-error');
 const pagesError = document.getElementById('pages-error');
+const pwError = document.getElementById('pw-error');
+const pwConfirmError = document.getElementById('pw-confirm-error');
+
+function resetInputs() {
+  inputTitle.value = '';
+  inputTitle.classList.remove('check');
+  inputAuthor.value = '';
+  inputAuthor.classList.remove('check');
+  inputPages.value = '';
+  inputPages.classList.remove('check');
+  inputPw.value = '';
+  inputPw.classList.remove('check');
+  inputPwConfirm.value = '';
+  inputPwConfirm.classList.remove('check');
+}
 
 function closeForm() {
+  resetInputs();
   form.style.display = 'none';
   filter.classList.remove('blur');
 }
@@ -67,11 +85,34 @@ inputPages.addEventListener('input', (e) => {
   }
 });
 
+inputPw.addEventListener('input', (e) => {
+  if (!inputPw.validity.valid) {
+    showError(inputPw, pwError);
+  } else {
+    pwError.textContent = '';
+  }
+});
+
+inputPwConfirm.addEventListener('input', (e) => {
+  if (!inputPwConfirm.validity.valid) {
+    showError(inputPwConfirm, pwConfirmError);
+  } else if (inputPwConfirm.value !== inputPw.value) {
+    pwConfirmError.textContent = 'Passwords do not match';
+    inputPwConfirm.style.border = '1px solid red';
+  } else {
+    pwConfirmError.textContent = '';
+    inputPwConfirm.style.border = '';
+  }
+});
+
 function showError(targetInput, targetError) {
   if (targetInput.validity.valueMissing) {
     targetError.textContent = 'This field cannot be empty.';
-    targetInput.classList.add('check');
+  } else if (!targetInput.validity.valid) {
+    targetError.textContent =
+      'Password has to have minimum eight characters, at least one uppercase letter, one lowercase letter and one number';
   }
+  targetInput.classList.add('check');
 }
 
 submitForm.addEventListener('submit', function (e) {
@@ -82,6 +123,13 @@ submitForm.addEventListener('submit', function (e) {
     showError(inputAuthor, authorError);
   } else if (!inputPages.validity.valid) {
     showError(inputPages, pagesError);
+  } else if (!inputPw.validity.valid) {
+    showError(inputPw, pwError);
+  } else if (!inputPwConfirm.validity.valid) {
+    showError(inputPwConfirm, pwConfirmError);
+  } else if (inputPwConfirm.value !== inputPw.value) {
+    pwConfirmError.textContent = 'Passwords do not match';
+    inputPwConfirm.style.border = '1px solid red';
   } else {
     addBook(
       inputTitle.value,
